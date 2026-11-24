@@ -32,6 +32,7 @@ header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
 h2{font-size:clamp(17px,2vw,22px);line-height:1.25;margin:0}
 a{color:inherit}
 .course-cta{display:inline-flex;align-items:center;gap:6px;color:#80501f;font-weight:700;font-size:.875rem;line-height:1.25;text-align:right;text-decoration:none}
+.course-cta > span{color:#da5b4e}
 .course-cta:hover{text-decoration:underline}
 .chevron{display:block;flex:none;width:14px;height:14px}
 .groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:34px;row-gap:28px}
@@ -44,7 +45,7 @@ a{color:inherit}
 }
 .track::-webkit-scrollbar{display:none}
 .card{display:grid;grid-template-rows:minmax(0,1fr) auto;height:302px;overflow:hidden;border:1px solid #e9dece;border-radius:14px;background:#fff;text-decoration:none;scroll-snap-align:start}
-.card img{width:100%;height:100%;object-fit:contain;background:#f3ebdf;display:block}
+.card img{width:100%;height:100%;object-fit:contain;background:#f4f2e6;display:block}
 .copy{min-width:0;padding:10px 13px;display:grid;gap:6px;align-content:start}
 .copy p{
   min-width:0;height:2.8em;margin:0;font-size:1rem;line-height:1.4;font-weight:650;
@@ -55,12 +56,12 @@ a{color:inherit}
 .reviewer-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .reviewer-icon{
   display:grid;place-items:center;flex:none;width:20px;height:20px;border-radius:50%;
-  background:#f5e9d2;color:#866337
+  background:#eedbac;color:#fff
 }
-.reviewer-icon svg{display:block;width:14px;height:14px}
+.reviewer-icon svg{display:block;width:20px;height:20px}
 .tag{
   justify-self:start;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-  border-radius:20px;background:#f5eee4;color:#714d2d;padding:3px 9px;font-size:.8rem;line-height:1.25
+  border-radius:20px;background:#eedbac;color:#6d5742;font-weight:700;padding:3px 9px;font-size:.8rem;line-height:1.25
 }
 .side-button{
   position:absolute;top:50%;transform:translateY(-50%);z-index:1;
@@ -98,7 +99,7 @@ a{color:inherit}
 `;
 
 const chevron = '<svg class="chevron" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-const reviewerIcon = '<span class="reviewer-icon" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="4.4" r="2.2"/><path d="M3.4 13.2v-.5a4.6 4 0 0 1 9.2 0v.5z"/></svg></span>';
+const reviewerIcon = '<span class="reviewer-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><circle cx="10" cy="7.25" r="3.2"/><path d="M7.5 10.65a4.35 4.35 0 0 0 5 0c1.9.9 3.3 2.9 3.3 4.4 0 .6-.45.9-1.15.9h-9.3c-.7 0-1.15-.3-1.15-.9 0-1.5 1.4-3.5 3.3-4.4z"/></svg></span>';
 
 function group(reviews, course, workTitles) {
   const label = escape(course.name);
@@ -108,7 +109,8 @@ function group(reviews, course, workTitles) {
     ${heading}<div class="carousel"><div class="track" tabindex="0">
     ${reviews.map(r => {
       const work = workTitles[new URL(r.url).pathname];
-      return `<a class="card" href="${escape(r.url)}" target="_blank" rel="noopener"><img src="${escape(r.image)}" alt="" decoding="async"><div class="copy"><small class="reviewer">${reviewerIcon}<span class="reviewer-name">${safeText(r.name)}</span></small><p>${safeText(r.title)}</p><span class="tag"># ${work ? escape(work) : label}</span></div></a>`;
+      const studentName = r.name.replace(/^學員(?:\s|&nbsp;|&#0*160;|&#x0*a0;)*/i, "");
+      return `<a class="card" href="${escape(r.url)}" target="_blank" rel="noopener"><img src="${escape(r.image)}" alt="" decoding="async"><div class="copy"><small class="reviewer">${reviewerIcon}<span class="reviewer-name">學員 ${safeText(studentName)}</span></small><p>${safeText(r.title)}</p><span class="tag"># ${work ? escape(work) : label}</span></div></a>`;
     }).join("")}
     </div>
     <button class="side-button" type="button" data-dir="-1" aria-label="${label}，上一張">${chevron}</button>
