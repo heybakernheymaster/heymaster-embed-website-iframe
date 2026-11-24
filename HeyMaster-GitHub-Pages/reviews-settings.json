@@ -1,0 +1,24 @@
+{
+  "courses": [
+    {
+      "name": "異國蔬食來開動",
+      "categoryUrl": "https://heyheymaster.com/posts/categories/global-vegan-dishes",
+      "courseUrl": "https://heyheymaster.com/courses/global-vegan-dishes",
+      "buttonText": "一起動手做蔬食料理"
+    },
+    {
+      "name": "寵物點心入門指南",
+      "categoryUrl": "https://heyheymaster.com/posts/categories/pet-treats-for-beginners",
+      "courseUrl": "https://heyheymaster.com/courses/pet-treats-for-beginners",
+      "buttonText": "一起動手做寵物點心"
+    }
+  ],
+  "coverWorks": {
+    "/posts/global-vegan-dishes05": "泰式椒麻雞",
+    "/posts/global-vegan-dishes04": "義式紅醬手打漢堡排",
+    "/posts/global-vegan-dishes03": "泰式椒麻雞",
+    "/posts/global-vegan-dishes02": "日式茶碗蒸",
+    "/posts/pet-treats-for-beginners07": "肉肉波卡",
+    "/posts/pet-treats-for-beginners06": "造型寵物餅乾"
+  }
+}
