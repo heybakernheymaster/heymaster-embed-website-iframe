@@ -101,7 +101,15 @@ a{color:inherit}
 .card img{height:auto;aspect-ratio:1 / 1;object-fit:cover}
 body { background: #fff; }
 .group h2 { color: #50443c; letter-spacing: 0.01em; }
-.tag { background: #835e4b; color: #fff; font-weight: 400; }
+.tag {
+  background: #edf0f3;
+  color: #565656;
+  font-weight: 400;
+  padding: 6px 12px;
+  line-height: 1.4;
+  margin-top: 5px;
+}
+.tag-hash { color: #835e4b; }
 `;
 
 const chevron = '<svg class="chevron" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -116,7 +124,7 @@ function group(reviews, course, workTitles) {
     ${reviews.map(r => {
       const work = workTitles[new URL(r.url).pathname];
       const studentName = r.name.replace(/^學員(?:\s|&nbsp;|&#0*160;|&#x0*a0;)*/i, "");
-      return `<a class="card" href="${escape(r.url)}" target="_blank" rel="noopener"><img src="${escape(r.image)}" alt="" decoding="async"><div class="copy"><small class="reviewer">${reviewerIcon}<span class="reviewer-name">學員 ${safeText(studentName)}</span></small><p>${safeText(r.title)}</p><span class="tag"># ${work ? escape(work) : label}</span></div></a>`;
+      return `<a class="card" href="${escape(r.url)}" target="_blank" rel="noopener"><img src="${escape(r.image)}" alt="" decoding="async"><div class="copy"><small class="reviewer">${reviewerIcon}<span class="reviewer-name">學員 ${safeText(studentName)}</span></small><p>${safeText(r.title)}</p><span class="tag"><span class="tag-hash">#</span> ${work ? escape(work) : label}</span></div></a>`;
     }).join("")}
     </div>
     <button class="side-button" type="button" data-dir="-1" aria-label="${label}，上一張">${chevron}</button>
