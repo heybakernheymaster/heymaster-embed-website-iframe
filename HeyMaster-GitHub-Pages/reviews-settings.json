@@ -1,24 +1,29 @@
 {
   "courses": [
     {
-      "name": "異國蔬食來開動",
-      "categoryUrl": "https://heyheymaster.com/posts/categories/global-vegan-dishes",
-      "courseUrl": "https://heyheymaster.com/courses/global-vegan-dishes",
-      "buttonText": "一起動手做蔬食料理"
+      "name": "林庚辰的磅蛋糕專修",
+      "categoryUrl": "https://heyheymaster.com/posts/categories/pound-cake-masterclass-with-chef-lin",
+      "courseUrl": "https://heyheymaster.com/courses/pound-cake-masterclass-with-chef-lin",
+      "buttonText": "一起做磅蛋糕"
     },
     {
-      "name": "寵物點心入門指南",
-      "categoryUrl": "https://heyheymaster.com/posts/categories/pet-treats-for-beginners",
-      "courseUrl": "https://heyheymaster.com/courses/pet-treats-for-beginners",
-      "buttonText": "一起動手做寵物點心"
+      "name": "糖果高手養成計畫",
+      "categoryUrl": "https://heyheymaster.com/posts/categories/candy-making-17-recipes-5-textures",
+      "courseUrl": "https://heyheymaster.com/courses/candy-making-17-recipes-5-textures",
+      "buttonText": "一起做糖果"
+    },
+    {
+      "name": "野生酵母麵包進化論",
+      "categoryUrl": "https://heyheymaster.com/posts/categories/wild-yeast-bread",
+      "courseUrl": "https://heyheymaster.com/courses/wild-yeast-bread-online-course",
+      "buttonText": "一起做野酵麵包"
+    },
+    {
+      "name": "家常和菓子手帖",
+      "categoryUrl": "https://heyheymaster.com/posts/categories/authentic-wagashi-making-at-home",
+      "courseUrl": "https://heyheymaster.com/courses/authentic-wagashi-making-at-home",
+      "buttonText": "一起做和菓子"
     }
   ],
-  "coverWorks": {
-    "/posts/global-vegan-dishes05": "泰式椒麻雞",
-    "/posts/global-vegan-dishes04": "義式紅醬手打漢堡排",
-    "/posts/global-vegan-dishes03": "泰式椒麻雞",
-    "/posts/global-vegan-dishes02": "日式茶碗蒸",
-    "/posts/pet-treats-for-beginners07": "肉肉波卡",
-    "/posts/pet-treats-for-beginners06": "造型寵物餅乾"
-  }
+  "coverWorks": {}
 }
