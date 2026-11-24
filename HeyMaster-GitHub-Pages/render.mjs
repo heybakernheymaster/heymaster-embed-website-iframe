@@ -97,6 +97,8 @@ a{color:inherit}
 }
 @media(prefers-reduced-motion:reduce){.track{scroll-behavior:auto}}
 .course-cta{color:#da5b4e;font-size:1rem}
+.card{height:auto;grid-template-rows:auto 1fr}
+.card img{height:auto;aspect-ratio:1 / 1;object-fit:cover}
 `;
 
 const chevron = '<svg class="chevron" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
