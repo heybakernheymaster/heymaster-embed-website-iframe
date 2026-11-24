@@ -99,6 +99,9 @@ a{color:inherit}
 .course-cta{color:#da5b4e;font-size:1rem}
 .card{height:auto;grid-template-rows:auto 1fr}
 .card img{height:auto;aspect-ratio:1 / 1;object-fit:cover}
+body { background: #fff; }
+.group h2 { color: #835e4b; }
+.tag { background: #835e4b; color: #fff; font-weight: 400; }
 `;
 
 const chevron = '<svg class="chevron" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
