@@ -57,6 +57,17 @@ button{width:32px;height:32px;border:1px solid #dccdb8;border-radius:50%;backgro
 button:disabled{opacity:.35;cursor:default}
 :focus-visible{outline:2px solid #815020;outline-offset:-2px}
 @media(max-width:720px){main{padding:9px 12px}.groups{grid-template-columns:1fr;gap:10px}.track{grid-auto-columns:76%}.card{height:235px;grid-template-rows:minmax(0, 1.2fr) minmax(0,1fr)}.copy{padding:7px 10px}.copy p{-webkit-line-clamp:2}}
+@media (min-width: 721px) {
+  .groups {
+    row-gap: 28px;
+  }
+}
+
+@media (max-width: 720px) {
+  .groups > .group:nth-child(n+3) {
+    display: none;
+  }
+}
 @media(prefers-reduced-motion:reduce){.track{scroll-behavior:auto}}
 `;
 
