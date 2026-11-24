@@ -100,7 +100,7 @@ a{color:inherit}
 .card{height:auto;grid-template-rows:auto 1fr}
 .card img{height:auto;aspect-ratio:1 / 1;object-fit:cover}
 body { background: #fff; }
-.group h2 { color: #835e4b; }
+.group h2 { color: #50443c; letter-spacing: 0.01em; }
 .tag { background: #835e4b; color: #fff; font-weight: 400; }
 `;
 
