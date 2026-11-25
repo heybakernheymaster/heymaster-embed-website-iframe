@@ -110,6 +110,21 @@ body { background: #fff; }
   margin-top: 5px;
 }
 .tag-hash { color: #835e4b; }
+.course-cta,
+.course-cta > span {
+  color: #424242;
+}
+
+.card {
+  border: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .08);
+}
+
+.track {
+  margin: -6px -8px -6px;
+  padding: 6px 8px 14px;
+  scroll-padding-inline: 8px;
+}
 `;
 
 const chevron = '<svg class="chevron" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
