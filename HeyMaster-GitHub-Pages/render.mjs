@@ -166,7 +166,7 @@ body { background: #fff; }
 /* 右上「一起做」文字與箭頭顏色。換色只改這裡 */
 .course-cta,
 .course-cta > span {
-  color: #e9c981;
+  color: #8b5c46;
 }
 
 /* 好評卡去除外框，改用淡陰影 */
