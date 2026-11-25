@@ -224,7 +224,7 @@ const reviewScrollMark = document.createElement('div');
 
 reviewScrollCue.setAttribute('aria-hidden', 'true');
 reviewScrollCue.style.cssText =
-  'position:fixed;top:33%;right:clamp(3px,calc((100% - 1320px)/2 + 3px),44px);' +
+  'position:fixed;top:33%;right:clamp(3px,calc((100% - 1320px)/2 + 8px),56px);' +
   'width:2px;height:60px;border-radius:99px;background:#e4dbd5;' +
   'pointer-events:none;z-index:10';
 
