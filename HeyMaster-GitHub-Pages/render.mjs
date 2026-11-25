@@ -112,7 +112,7 @@ body { background: #fff; }
 .tag-hash { color: #835e4b; }
 .course-cta,
 .course-cta > span {
-  color: #424242;
+  color: #e9c981;
 }
 
 .card {
