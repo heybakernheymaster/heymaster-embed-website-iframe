@@ -218,46 +218,33 @@ export function render(reviews, settings) {
   <main><div class="groups">${settings.courses.map((course, index) => group(reviews[index], course, settings.coverWorks)).join("")}</div>
   </main><script>
   /* 每組好評各自控制自己的左右按鈕和進度條 */
-  /* 學員作品嵌入區右側的直向捲動提示 */
-const reviewScrollRail = document.createElement('div');
-const reviewScrollThumb = document.createElement('div');
+ /* 右側往下滑提示。短線自行由上往下循環 */
+const reviewScrollCue = document.createElement('div');
+const reviewScrollMark = document.createElement('div');
 
-reviewScrollRail.setAttribute('aria-hidden', 'true');
-reviewScrollRail.style.cssText =
-  'position:fixed;top:12px;bottom:12px;right:max(10px,calc((100% - 1320px)/2 + 8px));width:5px;' +
-  'border-radius:999px;background:rgba(113,89,75,.10);' +
-  'z-index:10;pointer-events:none';
+reviewScrollCue.setAttribute('aria-hidden', 'true');
+reviewScrollCue.style.cssText =
+  'position:fixed;top:33%;right:clamp(3px,calc((100% - 1320px)/2 + 3px),44px);' +
+  'width:2px;height:60px;border-radius:99px;background:#e4dbd5;' +
+  'pointer-events:none;z-index:10';
 
-reviewScrollThumb.style.cssText =
-  'width:100%;border-radius:inherit;background:rgba(113,89,75,.42)';
+reviewScrollMark.style.cssText =
+  'position:absolute;top:0;left:50%;width:3px;height:18px;' +
+  'border-radius:99px;background:#835e4b;transform:translateX(-50%)';
 
-reviewScrollRail.append(reviewScrollThumb);
-document.body.append(reviewScrollRail);
+reviewScrollCue.append(reviewScrollMark);
+document.body.append(reviewScrollCue);
 
-function updateReviewScrollRail() {
-  const page = document.scrollingElement;
-  if (!page) return;
-
-  const scrollable = page.scrollHeight - page.clientHeight;
-  reviewScrollRail.hidden = scrollable < 2;
-  if (reviewScrollRail.hidden) return;
-
-  const railHeight = reviewScrollRail.clientHeight;
-  const thumbHeight = Math.min(
-    railHeight,
-    Math.max(24, railHeight * page.clientHeight / page.scrollHeight)
-  );
-  const progress = Math.max(0, Math.min(1, page.scrollTop / scrollable));
-
-  reviewScrollThumb.style.height = thumbHeight + 'px';
-  reviewScrollThumb.style.transform =
-    'translateY(' + (railHeight - thumbHeight) * progress + 'px)';
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  reviewScrollMark.animate([
+    { transform: 'translate(-50%, 0)', opacity: 0, offset: 0 },
+    { transform: 'translate(-50%, 0)', opacity: 1, offset: .10 },
+    { transform: 'translate(-50%, 0)', opacity: 1, offset: .30, easing: 'ease-in-out' },
+    { transform: 'translate(-50%, 42px)', opacity: 1, offset: .86 },
+    { transform: 'translate(-50%, 42px)', opacity: 0, offset: .96 },
+    { transform: 'translate(-50%, 42px)', opacity: 0, offset: 1 }
+  ], { duration: 1500, iterations: Infinity });
 }
-
-window.addEventListener('scroll', updateReviewScrollRail, { passive: true });
-window.addEventListener('resize', updateReviewScrollRail);
-new ResizeObserver(updateReviewScrollRail).observe(document.querySelector('main'));
-updateReviewScrollRail();
   for (const carousel of document.querySelectorAll('.carousel')) {
     const track = carousel.querySelector('.track');
     const [prev, next] = carousel.querySelectorAll('button');
