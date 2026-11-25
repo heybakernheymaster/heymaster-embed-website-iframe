@@ -218,6 +218,46 @@ export function render(reviews, settings) {
   <main><div class="groups">${settings.courses.map((course, index) => group(reviews[index], course, settings.coverWorks)).join("")}</div>
   </main><script>
   /* 每組好評各自控制自己的左右按鈕和進度條 */
+  /* 學員作品嵌入區右側的直向捲動提示 */
+const reviewScrollRail = document.createElement('div');
+const reviewScrollThumb = document.createElement('div');
+
+reviewScrollRail.setAttribute('aria-hidden', 'true');
+reviewScrollRail.style.cssText =
+  'position:fixed;top:12px;bottom:12px;right:8px;width:5px;' +
+  'border-radius:999px;background:rgba(113,89,75,.10);' +
+  'z-index:10;pointer-events:none';
+
+reviewScrollThumb.style.cssText =
+  'width:100%;border-radius:inherit;background:rgba(113,89,75,.42)';
+
+reviewScrollRail.append(reviewScrollThumb);
+document.body.append(reviewScrollRail);
+
+function updateReviewScrollRail() {
+  const page = document.scrollingElement;
+  if (!page) return;
+
+  const scrollable = page.scrollHeight - page.clientHeight;
+  reviewScrollRail.hidden = scrollable < 2;
+  if (reviewScrollRail.hidden) return;
+
+  const railHeight = reviewScrollRail.clientHeight;
+  const thumbHeight = Math.min(
+    railHeight,
+    Math.max(24, railHeight * page.clientHeight / page.scrollHeight)
+  );
+  const progress = Math.max(0, Math.min(1, page.scrollTop / scrollable));
+
+  reviewScrollThumb.style.height = thumbHeight + 'px';
+  reviewScrollThumb.style.transform =
+    'translateY(' + (railHeight - thumbHeight) * progress + 'px)';
+}
+
+window.addEventListener('scroll', updateReviewScrollRail, { passive: true });
+window.addEventListener('resize', updateReviewScrollRail);
+new ResizeObserver(updateReviewScrollRail).observe(document.querySelector('main'));
+updateReviewScrollRail();
   for (const carousel of document.querySelectorAll('.carousel')) {
     const track = carousel.querySelector('.track');
     const [prev, next] = carousel.querySelectorAll('button');
