@@ -224,7 +224,7 @@ const reviewScrollThumb = document.createElement('div');
 
 reviewScrollRail.setAttribute('aria-hidden', 'true');
 reviewScrollRail.style.cssText =
-  'position:fixed;top:12px;bottom:12px;right:8px;width:5px;' +
+  'position:fixed;top:12px;bottom:12px;right:max(10px,calc((100% - 1320px)/2 + 8px));width:5px;' +
   'border-radius:999px;background:rgba(113,89,75,.10);' +
   'z-index:10;pointer-events:none';
 
