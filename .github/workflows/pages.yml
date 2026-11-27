@@ -1,3 +1,4 @@
+
 name: Publish GitHub Pages
 
 on:
@@ -16,26 +17,54 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+
     steps:
       - uses: actions/checkout@v5
+
       - uses: actions/setup-node@v5
         with:
           node-version: 24
-      - run: node build.mjs
-        working-directory: HeyMaster-GitHub-Pages
+
+      # 01｜學員好評區
+      - name: Build student feedback
+        run: node build.mjs
+        working-directory: student-feedback
+
+      # 02｜整合所有嵌入網站
+      - name: Prepare website
+        run: |
+          mkdir -p _site
+
+          # 保留學員好評原本的網址
+          cp -a student-feedback/dist/. _site/
+
+          # 學員好評的新網址
+          mkdir -p _site/student-feedback
+          cp -a student-feedback/dist/. _site/student-feedback/
+
+          # 課程分類區
+          if [ -d course-categories ]; then
+            mkdir -p _site/course-categories
+            cp -a course-categories/. _site/course-categories/
+          fi
+
+      # 03｜上傳網站
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: HeyMaster-GitHub-Pages/dist
+          path: _site
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
+
     permissions:
       pages: write
       id-token: write
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
