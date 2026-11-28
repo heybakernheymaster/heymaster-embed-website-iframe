@@ -38,7 +38,7 @@ export function readReviews(html, categoryUrl) {
 const style = `
 /* 全頁字型、文字顏色、底色和外側留白 */
 *{box-sizing:border-box}
-body{margin:0;color:#50443c;background:#fff;font-family:system-ui,sans-serif}
+body{margin:0;color:#50443c;background:#fff;font-family:"Noto Sans TC",system-ui,sans-serif}
 main{max-width:1320px;margin:auto;padding:12px 20px 8px}
 a{color:inherit}
 
@@ -214,7 +214,9 @@ function group(reviews, course, workTitles) {
 
 /* 把所有課程組、CSS 和輪播操作程式組成完整網頁 */
 export function render(reviews, settings) {
-  return `<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>學員好評｜HeyMaster</title><style>${style}</style>
+  return `<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>學員好評｜HeyMaster</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400..700&amp;display=swap">
+<style>${style}</style>
   <main><div class="groups">${settings.courses.map((course, index) => group(reviews[index], course, settings.coverWorks)).join("")}</div>
   </main><script>
   /* 每組好評各自控制自己的左右按鈕和進度條 */
